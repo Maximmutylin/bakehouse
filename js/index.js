@@ -30,14 +30,17 @@ names.forEach((e, i, arr) => {
     arr[i] = e.replace(/\n/g, "");
 })
 
+//Готовый массив с наименования товара
 const allname = names.map(e => {
     return e.trim()
-}) //Готовый массив с наименования товара
+}) 
 
+//Готовый массив с ценами
 const intermediatePrice = prises.map(e => {
     
     return e.trim()
-}) //Готовый массив с ценами
+}) 
+
 const allPrice = intermediatePrice.map(e => e.slice(6,10));
 
 const btn = document.querySelectorAll('.item__button');
@@ -46,15 +49,20 @@ const iconFullPrice = document.querySelector('.buy__fullprice');
 
 const lastPrice = [];
 
-const cart = () => {
+const cart = event => {
+    // Проверяем корзину на наличие данного товара, если он есть повторно не добавляем
     if (document.querySelector('.article-' + event.target.dataset.article)) {
         return;    
     }
 
+    // Создаем саму корзину и управление ее, внешний интерфейс
+    const cartCounter = document.querySelector('.header__counter');
+    cartCounter.style = 'display: flex;';
+    cartCounter.textContent++;
+
     const cartWrapper = document.createElement('div');
     cartWrapper.classList.add('buy__wrapper', 'article-' + event.target.dataset.article); 
     buy.appendChild(cartWrapper);
-
 
     let cartImg = document.createElement('img');
     cartImg.src = allImg[event.target.dataset.article];
@@ -81,6 +89,10 @@ const cart = () => {
     cartAmount.disabled = true;
     cartForm.appendChild(cartAmount);
 
+    let cartDelete = document.createElement('span');
+    cartDelete.classList.add('buy__delete');
+    cartWrapper.appendChild(cartDelete);
+
     let arrUp = document.createElement('div');
     arrUp.classList.add('buy__arrUp');
     arrUp.textContent = '>';
@@ -91,12 +103,14 @@ const cart = () => {
     cartForm.append(arrDown);
     arrDown.textContent = '>';
 
+    // Высчитываем общую сумму позиций в корзине
     const nowPrice = allPrice[event.target.dataset.article];
 
     lastPrice.push(+nowPrice);
     let summLastPrice = lastPrice.reduce((total, amount) => total + amount); 
     iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
 
+    //Логика подсчета общей суммы в зависимости от количества товара по нажатию стрелки вверх
     arrUp.addEventListener('click', function() {
         cartAmount.value ++;
         cartPrice.textContent = `Цена ${nowPrice * cartAmount.value} P`;
@@ -105,9 +119,9 @@ const cart = () => {
 
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-
     })
 
+    //Логика подсчета общей суммы в зависимости от количества товара по нажатию стрелки вниз
     arrDown.addEventListener('click', function() {
         cartAmount.value --;
 
@@ -126,14 +140,48 @@ const cart = () => {
 
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-       
-        
     })
 
-    
+    cartDelete.addEventListener('click', function() {
 
+        //Функционал удаление элемента корзины
+        const countingIterations = [];
 
-    
+        for (let i = 0; i < lastPrice.length; i++) {
+            if (lastPrice[i] === +nowPrice) {
+                countingIterations.push(lastPrice[i]);
+                lastPrice.splice(i, 1, 0);
+            } if (countingIterations.length === +cartAmount.value) {
+                break;
+            }
+        }
+        
+        // Интерфейс удаления
+        const deleteWrapper = document.querySelector('.article-' + event.target.dataset.article);
+        deleteWrapper.style = 'display: none;';
+        deleteWrapper.classList.remove('article-' + event.target.dataset.article);
+
+        //Убираем количество товара с иконки корзины при удалении товара
+        +cartCounter.textContent--;
+        +cartCounter.textContent < 1 ? cartCounter.style = 'display: none;' : cartCounter.style = 'display: flex;';
+
+        //Проверяем массив на наличие в нем элементов и если их нет добавляем 0, что бы работал reduce
+        if (lastPrice.length === 0) {
+            lastPrice.push(0);
+        }
+
+        //Высчитываем общую сумму и выводим ее 
+        summLastPrice = lastPrice.reduce((total, amount) => total + amount);
+        iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
+
+        //Очищаем массив от лишних нулей 
+        lastPrice.forEach((e, i, arr) => {
+            if (e === 0) {
+                arr.splice(i, 1);
+            }
+        })
+    })
+       
 };
 
 btn.forEach(e => {

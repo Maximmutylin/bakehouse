@@ -101,9 +101,31 @@ main {
 }
 
 .header__buy {
+  position: relative;
   position: absolute;
   cursor: pointer;
   right: 40px;
+}
+
+.header__counter {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  right: -50%;
+  top: -30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  display: none;
 }
 
 .header__logo {
@@ -240,10 +262,18 @@ main {
   margin-top: 30px;
 }
 
+.circle img {
+  max-width: 100%;
+}
+
 .women {
   position: absolute;
   left: 20%;
   top: 17%;
+}
+
+.women img {
+  max-width: 100%;
 }
 
 .products__title {
@@ -299,6 +329,10 @@ main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 40%;
           flex: 1 1 40%;
+}
+
+.products__img img {
+  max-width: 100%;
 }
 
 .products__text-eggs {
@@ -526,6 +560,22 @@ main {
   height: 40px;
   background-color: #bebebe;
   text-align: center;
+}
+
+.buy__delete {
+  background-image: url("../IMG/musorka.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 10%;
+}
+
+.buy__delete:hover {
+  cursor: pointer;
 }
 
 .buy__arrUp {
