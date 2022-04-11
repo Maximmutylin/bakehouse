@@ -1,0 +1,562 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  :focus, :active {
+    outline: none;
+  }
+  
+  a:focus, a:active {
+    outline: none;
+  }
+  
+  nav, footer, header, aside {
+    display: block;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  input, button, textarea {
+    font-family: inherit;
+  }
+  
+  input::-ms-clear {
+    display: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+  
+  a, a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  ul li {
+    list-style: none;
+  }
+  
+  img {
+    vertical-align: top;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: 400;
+  }
+  
+  /*--------------------*/
+
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Arimo:ital@1&display=swap');
+
+
+
+
+
+
+  main{
+    background-image: url('../IMG/bgmain.png');
+    height: 100%;
+    position: relative;
+} 
+
+.header {
+    background-color: rgba(250, 250, 250, 0.85);
+    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    &__buy{
+        position: absolute;
+        cursor: pointer;
+        right: 40px;
+    }
+    &__logo {
+        background-image: url('../IMG/photo.svg');
+        background-repeat: no-repeat;
+        background-size: 100px auto;
+        width: 100px;
+        height: 70px;
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        
+
+    }
+    &__item {
+        margin: 0 50px;
+        font-family: Comfortaa;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1em;
+    }
+}
+
+.welcome {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    height: 40%;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    &__logo {
+        background-image: url('../IMG/photo.svg');
+        background-repeat: no-repeat;
+        background-size: 150px 120px;
+        width: 150px;
+        height: 120px;
+        margin-top: -60px;
+    }
+
+    &__title {
+        font-size: 3.5em;
+        font-family: 'Comfortaa';
+
+        color: rgb(72, 73, 10);
+    }
+
+    &__subtitle {
+        width: 25%;
+        text-align: center;
+        margin-top: 20px;
+        font-family: 'Arimo';
+        line-height: 18px;
+        color: rgb(70, 70, 59);
+    }
+    
+}
+
+.about {
+    height: 100%;
+    background-color: rgb(248, 248, 234);
+    overflow: hidden;
+
+    &__wrapper {
+        display: flex;
+        height: 100%;
+        
+    }
+
+    &__text {
+        flex: 1 1 50%;
+        position: relative;
+
+    }
+    &__info {
+        position: absolute;
+        top: 40%;
+        left: 15%;
+    }
+
+    &__title {
+        
+        font-size: 1.5em;
+        width: 40%;
+        color: gray;
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 26px;
+    }
+
+    &__title-bold {
+        font-size: 36px;
+        font-weight: bold;
+        color: rgb(80, 14, 17);
+    }
+    
+
+    &__link {
+        padding-top: 20px;
+        color: gray;
+        font-family: 'Comfortaa';
+        transition: .2s ease-in-out;
+        
+    }
+
+   
+    
+    &__link:hover {
+        color: orange;
+        cursor: pointer;
+    }
+
+    &__link::after {
+        content: '→';
+        margin-left: 6px;
+        
+    }
+
+    &__img {
+        flex: 1 1 50%;
+        position: relative;
+    }
+}
+
+.circle {
+    margin-top: 30px;
+}
+.women {
+    position: absolute;
+    left: 20%;
+    top: 17%;
+}
+
+
+
+
+.products {
+
+    &__title {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 70px 80px 0;
+    }
+    &__title::before{
+        content: '';
+        background-image: url('../IMG/kolos.svg');
+        background-repeat: no-repeat;
+        background-size: 50px 60px;
+        width: 100%;
+        height: 100%;
+        padding: 30px 0px 30px 45px;
+    }
+
+
+    &__wrapper {
+        margin: 0px 80px;
+    }
+
+    &__couple {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    &__text {
+        flex: 1 1 60%;
+    }
+
+    &__subtitle {
+        color: rgb(236, 195, 15);
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    &__subtext {
+        font-size: 20px;
+        padding: 0 15px 0 0;
+        margin-top: 20px;
+        color: grey;
+    }
+
+    &__img {
+        flex: 1 1 40%;
+    }
+
+    &__text-eggs {
+        padding-left: 30px;
+    }
+}
+
+.sale {
+    padding-bottom: 5%;
+    background-color: rgba(233, 241, 188, 0.281);
+    &__title {
+        text-align: center;
+        font-size: 36px;
+        font-family: Comfortaa;
+        padding-top: 50px;
+        font-weight: bold;
+        color: rgb(146, 146, 108);
+
+    }
+
+    &__wrapper {
+        margin: 50px 50px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__subtitle {
+        color: rgb(80, 72, 56);
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        margin: 50px 0;
+        font-family: Comfortaa;
+        
+    }
+}
+.item {
+    &__img{
+      text-align: center;
+    }
+
+    &__img img{
+        width: 300px;
+        max-width: 100%;
+        
+    }
+
+    &__name {
+        margin: 30px 0;
+        font-size: 20px;
+        text-align: center;
+        font-family: Comfortaa;
+        color: rgb(80, 72, 56);
+    }
+
+    &__description{
+        font-size: 16px;
+        line-height: 24px;
+        padding: 0 60px;
+        font-family: Comfortaa;
+        text-align: center;
+        color: rgb(80, 72, 56);
+    }
+
+    &__price {
+        margin: 30px 0;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-family: Comfortaa;
+        color: rgb(80, 72, 56);
+    }
+
+    &__button {
+        color: rgb(80, 72, 56);
+        text-align: center;
+        font-family: Comfortaa;
+        font-style: italic;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 25px;
+        width: 60%;
+        margin: 0px auto;
+        background-color: rgba(219, 235, 150, 0.61);
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+    }
+    &__button:hover{
+        background-color: rgba(208, 250, 24, 0.8);
+        cursor: pointer;
+    }
+
+}
+
+.footer {
+    
+    background-image: url('../IMG/bgfooter.png');
+    padding: 40px;
+    &__contacts {
+        background-color: rgb(0, 0, 0);
+        text-align: center;
+        line-height: 38px;
+        font-size: 24px;
+        color:rgb(255, 255, 255);
+        padding: 30px;
+        font-family: Comfortaa;
+        width: 50%;
+        margin: 0px auto;
+    }
+
+    &__adress {
+        padding: 20px 0;
+    }
+
+    &__phone {
+        padding: 20px 0;
+    }
+
+    &__button {
+        margin-top: 80px;
+        margin: 80px auto 0;
+        width: 250px;
+        padding: 25px;
+        border-radius: 50px;
+        background-color: rgb(255, 199, 199);
+        cursor: pointer;
+        background-color: rgba(219, 235, 150, 0.61);
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        color: rgb(80, 72, 56);
+    }
+    
+    &__button:hover{
+        background-color: rgba(208, 250, 24, 0.8);
+        cursor: pointer;
+    }
+}
+
+.info {
+height: 20%;
+background-color: gray;
+text-align: center;
+color: rgb(218, 218, 218);
+    &__name {
+        padding: 40px;
+    }
+
+    
+}
+
+
+
+.buy{
+    
+     
+    background-color: rgba(255, 255, 255, 1); 
+    position: fixed;
+    display: none;
+    z-index: 100; 
+    left: 15%;
+    top: 10%;
+    width: 70%;
+    height: 80%;
+    overflow: scroll;
+    padding-top: 40px;
+
+    
+    
+
+    &__close {
+        position: absolute;
+        right: 32px;
+        top: 32px;
+        width: 32px;
+        height: 32px;
+        
+        
+    }
+    &__close:before, &__close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    &__close:before {
+        transform: rotate(45deg);
+    }
+
+    &__close:after {
+        transform: rotate(-45deg);
+    }
+
+    &__wrapper {
+        margin: 20px 0;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        width: 150px;
+        height: auto;
+    }
+
+    &__name {
+        font-size: 24px;
+        padding: 0 20px;
+        width: 200px;
+    }
+
+    &__price {
+        font-size: 24px;
+        width: 200px;
+    }
+
+    &__amount {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(190, 190, 190);
+        text-align: center;  
+        
+    }
+    
+    &__arrUp{
+        width: 40px;
+        height: 40px;
+        background-color: rgb(204, 200, 200);
+        text-align: center;
+        transform: rotate(-90deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;   
+    }
+    
+    &__arrDown{
+        width: 40px;
+        height: 40px;
+        background-color: rgb(204, 200, 200);
+        text-align: center;
+        transform: rotate(90deg);
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__arrUp:hover, &__arrDown:hover {
+        cursor: pointer;
+    }
+
+    &__fullprice {
+        font-size: 24px;
+        padding-left: 20px;
+    }
+
+
+
+}
+
+
+
+// Comfortaa
+// Arimo
