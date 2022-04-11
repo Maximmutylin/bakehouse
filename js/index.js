@@ -63,13 +63,12 @@ const cart = event => {
     cartCounter.style = 'display: flex;';
     cartCounter.textContent++;
 
+    const cartText = document.querySelector('.buy__text');
+    cartText.style = 'display: none';
+
     const cartWrapper = document.createElement('div');
     cartWrapper.classList.add('buy__wrapper', 'article-' + event.target.dataset.article); 
     buy.appendChild(cartWrapper);
-
-    if (document.querySelector('.buy__wrapper')) {
-        document.querySelector('.buy__text').remove()
-    } 
 
     let cartImg = document.createElement('img');
     cartImg.src = allImg[event.target.dataset.article];
@@ -110,7 +109,7 @@ const cart = event => {
     cartForm.append(arrDown);
     arrDown.textContent = '>';
 
-
+    
 
     // Высчитываем общую сумму позиций в корзине
     const nowPrice = allPrice[event.target.dataset.article];
@@ -118,6 +117,7 @@ const cart = event => {
     lastPrice.push(+nowPrice);
     let summLastPrice = lastPrice.reduce((total, amount) => total + amount); 
     iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
+    iconFullPrice.style = 'display: block';
 
     //Логика подсчета общей суммы в зависимости от количества товара по нажатию стрелки вверх
     arrUp.addEventListener('click', function() {
@@ -188,6 +188,11 @@ const cart = event => {
                 arr.splice(i, 1);
             }
         })
+
+        if(!document.querySelector('.buy__wrapper')) {
+            cartText.style = 'display: block';
+            iconFullPrice.style = 'display: none';
+        }
 
         // Смена текста на кнопке при удалении товара их корзины
         event.target.textContent = 'Купить';
