@@ -527,6 +527,23 @@ main {
           transform: rotate(-45deg);
 }
 
+.buy__text {
+  font-size: 32px;
+  text-align: center;
+  margin-top: 30%;
+  font-family: Comfortaa;
+}
+
+.buy__text::after {
+  display: block;
+  content: '';
+  background-image: url("../IMG/smail.svg");
+  background-size: contain;
+  margin: 25px auto 0;
+  width: 100px;
+  height: 100px;
+}
+
 .buy__wrapper {
   margin: 20px 0;
   padding: 0 20px;

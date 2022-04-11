@@ -50,6 +50,9 @@ const iconFullPrice = document.querySelector('.buy__fullprice');
 const lastPrice = [];
 
 const cart = event => {
+    // Меняем текст кнопки при добавлении в корзину
+    event.target.textContent = 'Товар в корзине';
+
     // Проверяем корзину на наличие данного товара, если он есть повторно не добавляем
     if (document.querySelector('.article-' + event.target.dataset.article)) {
         return;    
@@ -63,6 +66,10 @@ const cart = event => {
     const cartWrapper = document.createElement('div');
     cartWrapper.classList.add('buy__wrapper', 'article-' + event.target.dataset.article); 
     buy.appendChild(cartWrapper);
+
+    if (document.querySelector('.buy__wrapper')) {
+        document.querySelector('.buy__text').remove()
+    } 
 
     let cartImg = document.createElement('img');
     cartImg.src = allImg[event.target.dataset.article];
@@ -102,6 +109,8 @@ const cart = event => {
     arrDown.classList.add('buy__arrDown');
     cartForm.append(arrDown);
     arrDown.textContent = '>';
+
+
 
     // Высчитываем общую сумму позиций в корзине
     const nowPrice = allPrice[event.target.dataset.article];
@@ -158,9 +167,8 @@ const cart = event => {
         
         // Интерфейс удаления
         const deleteWrapper = document.querySelector('.article-' + event.target.dataset.article);
-        deleteWrapper.style = 'display: none;';
-        deleteWrapper.classList.remove('article-' + event.target.dataset.article);
-
+        deleteWrapper.remove();
+        
         //Убираем количество товара с иконки корзины при удалении товара
         +cartCounter.textContent--;
         +cartCounter.textContent < 1 ? cartCounter.style = 'display: none;' : cartCounter.style = 'display: flex;';
@@ -180,10 +188,14 @@ const cart = event => {
                 arr.splice(i, 1);
             }
         })
+
+        // Смена текста на кнопке при удалении товара их корзины
+        event.target.textContent = 'Купить';
     })
-       
+
 };
 
 btn.forEach(e => {
     e.addEventListener('click', cart)
 })
+
