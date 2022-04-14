@@ -476,8 +476,8 @@ color: rgb(218, 218, 218);
 
 
 .buy{
-    
-     
+    display: flex;
+    position: relative;
     background-color: rgba(255, 255, 255, 1); 
     position: fixed;
     display: none;
@@ -488,9 +488,6 @@ color: rgb(218, 218, 218);
     height: 80%;
     overflow: scroll;
     padding-top: 40px;
-
-    
-    
     
     &__close {
         position: absolute;
@@ -515,12 +512,12 @@ color: rgb(218, 218, 218);
 
     &__close:after {
         transform: rotate(-45deg);
-    }
+    } 
 
     &__text {
         font-size: 32px;
         text-align: center;
-        margin-top: 30%;
+        margin-top: 15%;
         font-family: Comfortaa;
     }
 
@@ -612,11 +609,172 @@ color: rgb(218, 218, 218);
     &__fullprice {
         font-size: 24px;
         padding-left: 20px;
+        width: 250px;
+    }
+
+    &__cart {
+        display: block;
+        font-family: Comfortaa;
+        width: 250px;
+        text-align: center;
+        margin: 0px auto;
+        font-size: 18px;
+        padding: 20px;
+        border: 3px solid green;
+        background-color: rgb(219, 255, 219);
+        border-radius: 50px;
+        box-shadow: 5px 5px rgba(151, 153, 151, 0.411);;
+        transition: linear 0.4s;
+        cursor: pointer;
+    }
+    
+    &__cart-hover {
+        background-color: rgba(0, 219, 0, 0.507);
+        transform: translate(5px, 5px);
+        box-shadow: none; 
+    }
+
+    &__agreement{
+        position: absolute;
+        color: black;
+        width: 100%;
+        height: 100%;
+        background-color:  rgb(194, 194, 174);;
+        z-index: 200;
+        left: 0;
+        top: 0;
+        padding: 0 10%;
+        text-align: center;
+        font-size: 24px;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        display: none;
+    }
+
+    .buy__close2{
+
+        position: absolute;
+        right: 32px;
+        top: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    
+    
+    .buy__close2:before, .buy__close2:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    .buy__close2:before {
+        transform: rotate(45deg);
+    }
+
+    .buy__close2:after {
+        transform: rotate(-45deg);
+    } 
+
+    &__buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20%;
+        width: 300px;
+        
+        .buy__ok {
+            
+            background-color: rgb(255, 219, 166);
+            cursor: pointer;
+            padding: 20px;
+            display: block;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 50%;
+            width: 80px;
+            text-align: center;
+        }
+
+        .buy__no {
+            
+            background-color: rgb(255, 219, 166);
+            cursor: pointer;
+            padding: 20px;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 50%;
+            width: 80px;
+            text-align: center;
+        }
+    }
+
+	&__phone {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(194, 194, 174);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        color: #000;
+    }
+
+	&__phonetext {
+        font-size: 22px;
+        font-family: Arimo;
+        
+	}
+    &__phone form {
+        display: flex;
+        flex-direction: column;
+        font-family: Comfortaa;
+    }
+	&__inputphone {
+        margin: 20px auto 0;
+        height: 80px;
+        width: 300px;
+        font-size: 24px;
+        border-radius: 50px;
+        padding-left: 25px;   
+	}
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    &__inputphone:focus {
+        border: 2px solid aqua;
+    }
+
+    .buy__erorr{
+        color: red;
+        font-size: 16px;
+        margin: 10px 0;
+        width: 300px;
+    }
+
+	&__inputbtn {
+        width: 200px;
+        height: 70px;
+        text-align: center;
+        margin: 0px auto;
+        font-size: 20px;
+        font-style: italic;
     }
 
 
 
 }
+
 
 
 

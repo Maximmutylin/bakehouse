@@ -488,6 +488,10 @@ main {
 }
 
 .buy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
   background-color: white;
   position: fixed;
   display: none;
@@ -530,7 +534,7 @@ main {
 .buy__text {
   font-size: 32px;
   text-align: center;
-  margin-top: 30%;
+  margin-top: 15%;
   font-family: Comfortaa;
 }
 
@@ -642,5 +646,193 @@ main {
 .buy__fullprice {
   font-size: 24px;
   padding-left: 20px;
+  width: 250px;
+}
+
+.buy__cart {
+  display: block;
+  font-family: Comfortaa;
+  width: 250px;
+  text-align: center;
+  margin: 0px auto;
+  font-size: 18px;
+  padding: 20px;
+  border: 3px solid green;
+  background-color: #dbffdb;
+  border-radius: 50px;
+  -webkit-box-shadow: 5px 5px rgba(151, 153, 151, 0.411);
+          box-shadow: 5px 5px rgba(151, 153, 151, 0.411);
+  -webkit-transition: linear 0.4s;
+  transition: linear 0.4s;
+  cursor: pointer;
+}
+
+.buy__cart-hover {
+  background-color: rgba(0, 219, 0, 0.507);
+  -webkit-transform: translate(5px, 5px);
+          transform: translate(5px, 5px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.buy__agreement {
+  position: absolute;
+  color: black;
+  width: 100%;
+  height: 100%;
+  background-color: #c2c2ae;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  padding: 0 10%;
+  text-align: center;
+  font-size: 24px;
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+
+.buy .buy__close2 {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.buy .buy__close2:before, .buy .buy__close2:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+
+.buy .buy__close2:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.buy .buy__close2:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.buy__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 20%;
+  width: 300px;
+}
+
+.buy__buttons .buy__ok {
+  background-color: #ffdba6;
+  cursor: pointer;
+  padding: 20px;
+  display: block;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 80px;
+  text-align: center;
+}
+
+.buy__buttons .buy__no {
+  background-color: #ffdba6;
+  cursor: pointer;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 80px;
+  text-align: center;
+}
+
+.buy__phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #c2c2ae;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  color: #000;
+}
+
+.buy__phonetext {
+  font-size: 22px;
+  font-family: Arimo;
+}
+
+.buy__phone form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: Comfortaa;
+}
+
+.buy__inputphone {
+  margin: 20px auto 0;
+  height: 80px;
+  width: 300px;
+  font-size: 24px;
+  border-radius: 50px;
+  padding-left: 25px;
+}
+
+.buy input::-webkit-outer-spin-button,
+.buy input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.buy__inputphone:focus {
+  border: 2px solid aqua;
+}
+
+.buy .buy__erorr {
+  color: red;
+  font-size: 16px;
+  margin: 10px 0;
+  width: 300px;
+}
+
+.buy__inputbtn {
+  width: 200px;
+  height: 70px;
+  text-align: center;
+  margin: 0px auto;
+  font-size: 20px;
+  font-style: italic;
 }
 /*# sourceMappingURL=style.css.map */
