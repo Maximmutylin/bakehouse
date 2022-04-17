@@ -80,11 +80,97 @@
 
 
 
-  main{
+main{
     background-image: url('../IMG/bgmain.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
     position: relative;
 } 
+
+.menu {
+z-index: 1200;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+transform: translateY(-300px);
+display: none;
+background-color: rgb(232, 255, 128);
+position: relative;
+
+    &__close {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 32px;
+        height: 32px;
+        cursor: pointer; 
+    }
+
+    &__close:before, &__close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    &__close:before {
+        transform: rotate(45deg);
+    }
+
+    &__close:after {
+        transform: rotate(-45deg);
+    } 
+    &__item {
+        padding: 20px;
+        font-size: 16px;
+        font-family: Arimo;
+    }
+}
+
+.abc {
+    display: flex;
+    position: fixed;
+    height: 30%;
+    width: 100%;
+    animation: menu linear 0.5s forwards;
+    
+}
+
+@keyframes menu {
+    100% {
+        transform: translateY(0px); 
+    }
+}
+
+.burger {
+    display: none;
+    &__title {
+        display: inline-block;
+        position: relative;
+        font-family: Comfortaa;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1em;
+        margin: 20px 0 0 20px;
+        font-size: 16px;
+    }
+
+    &__title::before {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 3px;
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        left: -20px;
+        top: 5px;
+        box-shadow: 0 6px rgb(0, 0, 0), 0 -6px rgb(0, 0, 0);
+    }
+}
 
 .header {
     background-color: rgba(250, 250, 250, 0.85);
@@ -133,7 +219,7 @@
         height: 70px;
         position: absolute;
         top: 50%;
-        left: 100px;
+        left: 5%;
         
 
     }
@@ -173,7 +259,7 @@
     &__title {
         font-size: 3.5em;
         font-family: 'Comfortaa';
-
+        text-align: center;
         color: rgb(72, 73, 10);
     }
 
@@ -213,7 +299,7 @@
     &__title {
         
         font-size: 1.5em;
-        width: 40%;
+        padding-right: 15%;
         color: gray;
         font-family: 'Times New Roman', Times, serif;
         line-height: 26px;
@@ -258,6 +344,7 @@
 }
 .circle img{
     max-width: 100%;
+    object-fit: cover;
 }
 .women {
     position: absolute;
@@ -266,6 +353,7 @@
 }
 .women img{
     max-width: 100%;
+    object-fit: cover;
 }
 
 
@@ -346,6 +434,7 @@
         margin: 50px 50px 0;
         display: flex;
         justify-content: space-between;
+        
     }
 
     &__subtitle {
@@ -359,6 +448,7 @@
     }
 }
 .item {
+    padding-bottom: 20px;
     &__img{
       text-align: center;
     }
@@ -366,6 +456,8 @@
     &__img img{
         width: 300px;
         max-width: 100%;
+        object-fit: cover;
+        padding: 10px;
         
     }
 
@@ -375,15 +467,18 @@
         text-align: center;
         font-family: Comfortaa;
         color: rgb(80, 72, 56);
+        max-width: 300px;
+        margin: 30px auto 30px;
     }
 
     &__description{
         font-size: 16px;
         line-height: 24px;
-        padding: 0 60px;
+        padding: 0 20px;
         font-family: Comfortaa;
         text-align: center;
         color: rgb(80, 72, 56);
+        max-width: 300px;
     }
 
     &__price {
@@ -422,7 +517,7 @@
     background-image: url('../IMG/bgfooter.png');
     padding: 40px;
     &__contacts {
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(75, 66, 66);
         text-align: center;
         line-height: 38px;
         font-size: 24px;
@@ -444,7 +539,7 @@
     &__button {
         margin-top: 80px;
         margin: 80px auto 0;
-        width: 250px;
+        width: 200px;
         padding: 25px;
         border-radius: 50px;
         background-color: rgb(255, 199, 199);
@@ -491,10 +586,11 @@ color: rgb(218, 218, 218);
     
     &__close {
         position: absolute;
-        right: 32px;
-        top: 32px;
+        right: 15px;
+        top: 8px;
         width: 32px;
         height: 32px;
+        cursor: pointer; 
     }
 
     &__close:before, &__close:after {
@@ -566,10 +662,12 @@ color: rgb(218, 218, 218);
         background-image: url('../IMG/musorka.svg');
         background-size: contain;
         background-repeat: no-repeat;
+        background-position:center;
         align-items: center;
-        width: 50px;
-        height: 50px;
-        margin-left: 10%;
+        margin-left: 10px;
+        width: 35px;
+        height: 35px;
+    
     }
     
     &__delete:hover {
@@ -617,7 +715,7 @@ color: rgb(218, 218, 218);
         font-family: Comfortaa;
         width: 250px;
         text-align: center;
-        margin: 0px auto;
+        margin: 0px auto 15px;
         font-size: 18px;
         padding: 20px;
         border: 3px solid green;
@@ -655,7 +753,7 @@ color: rgb(218, 218, 218);
     }
 
     .buy__close2{
-
+        cursor: pointer;
         position: absolute;
         right: 32px;
         top: 32px;
@@ -682,6 +780,9 @@ color: rgb(218, 218, 218);
         transform: rotate(-45deg);
     } 
 
+    .buy__lasttext {
+        padding: 10px;
+    }
     &__buttons {
         display: flex;
         justify-content: space-around;
@@ -740,7 +841,7 @@ color: rgb(218, 218, 218);
 	&__inputphone {
         margin: 20px auto 0;
         height: 80px;
-        width: 300px;
+        width: 250px;
         font-size: 24px;
         border-radius: 50px;
         padding-left: 25px;   
@@ -770,13 +871,280 @@ color: rgb(218, 218, 218);
         font-size: 20px;
         font-style: italic;
     }
+}
 
+.parting {
+    position: fixed;
+    width: 40%;
+    height: 50%;
+    left: 30%;
+    top: 25%;
+    background-color: rgb(194, 194, 175);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
 
-
+    &__text {
+        text-align: center;
+        font-size: 18px;
+        font-family: Comfortaa;
+        padding: 15px;
+        line-height: 26px;
+        letter-spacing: 2px;
+    }
+    &__img {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 
+@media (max-width: 768px) {
+    .parting{
+        border-radius: 15px;
+    }
+    .parting__text {
+        font-size: 18px;
+        letter-spacing: normal;
+        line-height: normal;
+    }
+    .buy__fullprice{
+        font-size: 18px;
+    }
+    .buy__wrapper form  {
+        font-size: 18px;
+    }
+    .buy__name{
+        font-size: 18px;
+    }
+    .buy__price {
+        font-size: 18px;
+    }
+    
+    .buy__cart {
+        margin-bottom: 20px;
+    }
+    .header {
+        font-size: 0.7em;
+    }
+    .header__logo {
+        left: 2.5%;
+    }
+    .welcome {
+        font-size: 0.7em;
+    }
+    .about__text {
+        flex: 1 0 40%;
+    }
+    .about__img {
+        flex: 1 0 60%;
+    }
+    .about__img img {
+        max-width: 100%;
+        object-fit: cover;
+    }
+    .sale__wrapper {
+        flex-wrap: wrap;
+    }
+    .products__title::before {
+        content: '';
+        padding: 0;
+    }
+    .products {
+        padding-bottom: 25px;
+    }
+    .products__text {
+        flex: 0 0 50%;
+        
+    }
+    .products__subtitle {
+        font-size: 1.2em;
+    }
+    .products__subtext {
+        font-size: 1.2em;
+    }
 
+}
 
-// Comfortaa
-// Arimo
+@media (max-width: 700px) {
+    .sale__wrapper .item {
+        margin: 0px auto;
+    }
+    .item__img img {
+        width: 400px;
+    }
+    .item__description {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+        max-width: 400px;
+    }
+    .buy__img {
+        width: 100px;
+    }
+}
+@media (max-width: 600px) {
+    .buy__delete{
+        width: 70px;
+        height: 70px;
+        background-size: 50px 50px;
+        background-position: center;
+    }
+    .buy__img {
+        display: none;
+    }
+    .buy__name{
+        padding: 0 5px 0 0 ;
+    }
+    .footer__contacts {
+        width: 100%;
+    }
+    .header__logo {
+        width: 70px;
+        background-size:70px auto;
+        left: 1%;
+    }
+}
+@media (max-width: 500px) {
+    
+    .about__img {
+        display: none;
+    }
+    .about {
+        height: 70%;
+    }
+    .header__logo {
+        display: none;
+    }
+    .header__item {
+        display: none;
+    }
+    .header {
+        display: block;
+        
+    }
+    .parting__text {
+        font-size: 12px;
+    }
+    .parting__img {
+        width: 75px;
+        height: 75px;
+        letter-spacing: 0;
+        line-height: 16px;
+    }
+    .burger {
+        margin-left: 10px ;
+        display: block;
+    }
+    .header__icon {
+        margin-top: -22px;
+    }
+    .products__wrapper {
+        margin: 0 20px;
+    }
+    .products__title {
+        margin: 70px 20px 0;
+    }
+    .welcome {
+        font-size: 0.6em;
+    }
+    .welcome__subtitle {
+        width: 70%;
+    }
+    .buy__cart {
+        width: 200px;
+        font-size: 14px;
+    }
+    .buy {
+        width: 80%;
+        left: 10%;
+    }
+    .buy__fullprice{
+        font-size: 14px;
+    }
+    .buy__wrapper form  {
+        font-size: 14px;
+    }
+    .buy__name{
+        font-size: 14px;
+    }
+    .buy__price {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer__contacts {
+        font-size: 1.2em;
+    }
+    .footer__button {
+        width: 170px;
+        padding: 15px;
+    }
+    .info__name {
+        padding: 20px;
+    }
+
+.parting__text {
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.buy__amount {
+width: 30px;
+height: 30px;
+
+}
+.buy__arrUp {
+    width: 30px;
+    height: 30px;
+}
+.buy__arrDown {
+    width: 30px;
+    height: 30px;
+}
+.buy__delete{
+    width: 60px;
+    height: 50px;
+    background-size: 30px 30px;
+    background-position: center;
+}
+.products__couple {
+    flex-direction: column;
+}
+.products__img {
+    order: 1;
+}
+.products__subtext {
+    margin-bottom: 15px;
+}
+.item__description {
+    width: 300px;
+    margin: 0px auto;
+}
+.products__subtext {
+    width: 235px;
+    padding: 0;
+}
+.products__title {
+    width: 235px;
+    margin: 20px auto;
+}
+.sale__wrapper {
+    margin: 10px;
+}
+
+.item__img img {
+    width: 280px;
+    margin: 0px auto;
+    text-align: center;
+}
+.buy {
+    width: 85%;
+    left: 7.5%;
+}
+}

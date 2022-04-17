@@ -206,19 +206,29 @@ const cart = event => {
         buy.prepend(buyCart);
     }
 
-    let resultDate = []; // Итоговый массив с данными заказа
+   
+
+    function btnAnimation() {
+        buyCart.classList.add('buy__cart-hover');
+        setTimeout(() => {
+            buyCart.classList.remove('buy__cart-hover');
+        }, 1000);
+    }
+
+    buyCart.addEventListener('click', btnAnimation);
+
+    let resultDate = []; // Итоговый массив с данными заказа 
 
     // Нажатие кнопки заказа добавление окна подтверждения
     buyCart.addEventListener('click', function() {
-        buyCart.classList.add('buy__cart-hover');
-
+        
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         const windowAgreement = document.querySelector('.buy__agreement');
         setTimeout(() => {
             windowAgreement.style = 'display: flex;'
         }, 300);
         const windowAgreementText = document.querySelector('.buy__lasttext');
-        windowAgreementText.textContent = `Вы подтверждаете заказ на сумму ${summLastPrice} рублей ?`;
+        windowAgreementText.textContent = `Вы подтверждаете заказ на сумму ${summLastPrice} рублей?`;
         
         const keyOk = document.querySelector('.buy__ok');
         const keyNo = document.querySelector('.buy__no');
@@ -289,13 +299,16 @@ const cart = event => {
                     cartPhone.style = 'display: none;';
                     windowAgreement.style = 'display: none;';
                     erorrValidation.textContent = '';
-                    console.log(erorrValidation.textContent)
                     numberPhone.value = '';
                     resultDate = [];
                     lastPrice = [];
                     iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-                    //Окно спасибо за покупку сделать
-
+                    
+                    const thanksPurchase = document.querySelector('.parting');
+                    thanksPurchase.style = 'display: flex;';
+                    setTimeout(() => {
+                        thanksPurchase.style = 'display: none;';
+                    }, 4000);
                 })
 
             const closePhone = document.querySelector('.buy__close2');
@@ -312,5 +325,13 @@ btn.forEach(e => {
     e.addEventListener('click', cart)
 })
 
+const burger = document.querySelector('.burger__title');
 
-
+burger.addEventListener('click', function() {
+    const menu = document.querySelector('.menu');
+    menu.classList.add('abc');
+    const closeMenu = document.querySelector('.menu__close');
+    closeMenu.addEventListener('click', function() {
+        menu.classList.remove('abc');
+    })
+})
