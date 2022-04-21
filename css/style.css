@@ -163,6 +163,33 @@ main {
   }
 }
 
+.cba {
+  -webkit-animation: closeMenu linear 0.5s forwards;
+          animation: closeMenu linear 0.5s forwards;
+}
+
+@-webkit-keyframes closeMenu {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-500px);
+            transform: translateY(-500px);
+  }
+}
+
+@keyframes closeMenu {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-500px);
+            transform: translateY(-500px);
+  }
+}
+
 .burger {
   display: none;
 }
@@ -306,7 +333,7 @@ main {
 }
 
 .about {
-  height: 100%;
+  height: 600px;
   background-color: #f8f8ea;
   overflow: hidden;
 }
@@ -971,10 +998,10 @@ main {
 
 .parting {
   position: fixed;
-  width: 40%;
-  height: 50%;
-  left: 30%;
-  top: 25%;
+  width: 60%;
+  height: 60%;
+  left: 20%;
+  top: 20%;
   background-color: #c2c2af;
   z-index: 500;
   display: -webkit-box;
@@ -1257,6 +1284,22 @@ main {
   .buy {
     width: 85%;
     left: 7.5%;
+  }
+}
+
+@media (max-height: 400px) {
+  .welcome__logo {
+    background-size: 60px auto;
+    width: 130px;
+    height: 70px;
+    margin: -30px 0 0;
+    background-position: center;
+  }
+  .info {
+    height: 40%;
+  }
+  .header {
+    height: 20%;
   }
 }
 /*# sourceMappingURL=style.css.map */

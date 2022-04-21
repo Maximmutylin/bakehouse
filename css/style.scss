@@ -137,13 +137,26 @@ position: relative;
     height: 30%;
     width: 100%;
     animation: menu linear 0.5s forwards;
-    
+
+    @keyframes menu {
+        100% {
+            transform: translateY(0px); 
+        }
+    }
 }
 
-@keyframes menu {
-    100% {
+.cba {
+    animation: closeMenu linear 0.5s forwards;
+
+    @keyframes closeMenu {
+    0% {
         transform: translateY(0px); 
     }
+
+    100% {
+        transform: translateY(-500px); 
+    }
+    } 
 }
 
 .burger {
@@ -275,7 +288,7 @@ position: relative;
 }
 
 .about {
-    height: 100%;
+    height: 600px;
     background-color: rgb(248, 248, 234);
     overflow: hidden;
 
@@ -875,10 +888,10 @@ color: rgb(218, 218, 218);
 
 .parting {
     position: fixed;
-    width: 40%;
-    height: 50%;
-    left: 30%;
-    top: 25%;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    top: 20%;
     background-color: rgb(194, 194, 175);
     z-index: 500;
     display: flex;
@@ -1145,6 +1158,22 @@ height: 30px;
 }
 .buy {
     width: 85%;
-    left: 7.5%;
+    left: 7.5%; 
 }
+}
+
+@media (max-height: 400px) {
+    .welcome__logo {
+        background-size: 60px auto;
+        width: 130px;
+        height: 70px;
+        margin: -30px 0 0;
+        background-position: center;
+    }
+    .info {
+        height: 40%;
+    }
+    .header {
+        height: 20%;
+    }
 }

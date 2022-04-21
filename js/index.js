@@ -2,14 +2,14 @@
 
 const icon = document.querySelector('.header__icon');
 const opend = document.querySelector('.buy');
-const x = document.querySelector('.buy__close');
+const closeBuy = document.querySelector('.buy__close');
 
 const openedBuy = () => {
     opend.style = 'display: block';
 
-    x.addEventListener('click', function() {
-        opend.style = 'display: none';   
-    })    
+    closeBuy.addEventListener('click', function () {
+        opend.style = 'display: none';
+    })
 }
 
 icon.addEventListener('click', openedBuy);
@@ -26,23 +26,22 @@ items.forEach(e => {
 })
 
 names.forEach((e, i, arr) => {
-    if (!(typeof(e) === 'string')) return;
+    if (!(typeof (e) === 'string')) return;
     arr[i] = e.replace(/\n/g, "");
 })
 
 //Готовый массив с наименования товара
 const allname = names.map(e => {
     return e.trim()
-}) 
+})
 
 //Готовый массив с ценами
 const intermediatePrice = prises.map(e => {
-    
+
     return e.trim()
-}) 
+})
 
-const allPrice = intermediatePrice.map(e => e.slice(6,10));
-
+const allPrice = intermediatePrice.map(e => e.slice(6, 10));
 const btn = document.querySelectorAll('.item__button');
 const buy = document.querySelector('.buy');
 const iconFullPrice = document.querySelector('.buy__fullprice');
@@ -54,7 +53,7 @@ const cart = event => {
 
     // Проверяем корзину на наличие данного товара, если он есть повторно не добавляем
     if (document.querySelector('.article-' + event.target.dataset.article)) {
-        return;    
+        return;
     }
 
     // Создаем саму корзину и управление ее, внешний интерфейс
@@ -66,7 +65,7 @@ const cart = event => {
     cartText.style = 'display: none';
 
     const cartWrapper = document.createElement('div');
-    cartWrapper.classList.add('buy__wrapper', 'article-' + event.target.dataset.article); 
+    cartWrapper.classList.add('buy__wrapper', 'article-' + event.target.dataset.article);
     buy.appendChild(cartWrapper);
 
     let cartImg = document.createElement('img');
@@ -112,26 +111,27 @@ const cart = event => {
     const nowPrice = allPrice[event.target.dataset.article];
 
     lastPrice.push(+nowPrice);
-    let summLastPrice = lastPrice.reduce((total, amount) => total + amount); 
+    let summLastPrice = lastPrice.reduce((total, amount) => total + amount);
     iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
     iconFullPrice.style = 'display: block';
 
     let buyCart = document.createElement('div');
 
     //Логика подсчета общей суммы в зависимости от количества товара по нажатию стрелки вверх
-    arrUp.addEventListener('click', function() {
-        cartAmount.value ++;
+    const increasingNumber = () => {
+        cartAmount.value++;
         cartPrice.textContent = `Цена ${nowPrice * cartAmount.value} P`;
 
         lastPrice.push(+nowPrice);
 
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-    })
+    }
+    arrUp.addEventListener('click', increasingNumber)
 
     //Логика подсчета общей суммы в зависимости от количества товара по нажатию стрелки вниз
-    arrDown.addEventListener('click', function() {
-        cartAmount.value --;
+    const decreaseNumber = () => {
+        cartAmount.value--;
 
         if (+cartAmount.value === 0) {
             cartAmount.value = 1;
@@ -148,10 +148,11 @@ const cart = event => {
 
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-    })
+    }
+    arrDown.addEventListener('click', decreaseNumber)
 
-    cartDelete.addEventListener('click', function() {
-        //Функционал удаление элемента корзины
+    //Функционал удаление элемента корзины
+    const deletePosition = () => {
         const countingIterations = [];
 
         for (let i = 0; i < lastPrice.length; i++) {
@@ -162,11 +163,11 @@ const cart = event => {
                 break;
             }
         }
-        
+
         // Интерфейс удаления
         const deleteWrapper = document.querySelector('.article-' + event.target.dataset.article);
         deleteWrapper.remove();
-        
+
         //Убираем количество товара с иконки корзины при удалении товара
         +cartCounter.textContent--;
         +cartCounter.textContent < 1 ? cartCounter.style = 'display: none;' : cartCounter.style = 'display: flex;';
@@ -187,7 +188,7 @@ const cart = event => {
             }
         })
 
-        if(!document.querySelector('.buy__wrapper')) {
+        if (!document.querySelector('.buy__wrapper')) {
             cartText.style = 'display: block';
             iconFullPrice.style = 'display: none';
             document.querySelector('.buy__cart').remove();
@@ -195,130 +196,135 @@ const cart = event => {
 
         // Смена текста на кнопке при удалении товара их корзины
         event.target.textContent = 'Купить';
-    })
+    }
+
+    cartDelete.addEventListener('click', deletePosition);
 
     // Создание кнопки заказа
-    if (document.querySelector('.buy__cart')) {
-        return;
-    } else {
-        buyCart.classList.add('buy__cart');
-        buyCart.textContent = 'Офoрмить заказ';
-        buy.prepend(buyCart);
-    }
-
-   
-
-    function btnAnimation() {
-        buyCart.classList.add('buy__cart-hover');
-        setTimeout(() => {
-            buyCart.classList.remove('buy__cart-hover');
-        }, 1000);
-    }
-
-    buyCart.addEventListener('click', btnAnimation);
+    (function () {
+        if (document.querySelector('.buy__cart')) {
+            return;
+        } else {
+            buyCart.classList.add('buy__cart');
+            buyCart.textContent = 'Офoрмить заказ';
+            buy.prepend(buyCart);
+        }
+    }());
 
     let resultDate = []; // Итоговый массив с данными заказа 
 
     // Нажатие кнопки заказа добавление окна подтверждения
-    buyCart.addEventListener('click', function() {
-        
+    const confirmationOrder = () => {
         summLastPrice = lastPrice.reduce((total, amount) => total + amount);
         const windowAgreement = document.querySelector('.buy__agreement');
+
         setTimeout(() => {
             windowAgreement.style = 'display: flex;'
         }, 300);
         const windowAgreementText = document.querySelector('.buy__lasttext');
         windowAgreementText.textContent = `Вы подтверждаете заказ на сумму ${summLastPrice} рублей?`;
-        
+
         const keyOk = document.querySelector('.buy__ok');
         const keyNo = document.querySelector('.buy__no');
 
-        keyNo.addEventListener('click', function() {
+        keyNo.addEventListener('click', function () {
             windowAgreement.style = 'display: none';
         })
 
-        keyOk.addEventListener('click', function() {
+        // Сбор данных заказа, очищение корзины
+        const dataСapture = () => {
             const cartPhone = document.querySelector('.buy__phone');
-            cartPhone.style = 'display: flex;'
-            
-            // Сбор данных заказа, очищение корзины
+            cartPhone.style = 'display: flex;';
+
             const phoneBtn = document.querySelector('.buy__inputbtn');
-                phoneBtn.addEventListener('click', function() {
-                    const numberPhone = document.querySelector('.buy__inputphone');
-                    const erorrValidation = document.querySelector('.buy__erorr');
-                    
-                    if (numberPhone.value.length !== 11 || numberPhone.value[0] !== '7') {
-                        erorrValidation.textContent = 'Номер должен состоять из 11 цифр и начинаться с 7';
-                        return;
-                    };
+            const mainLogic = () => {
+                const numberPhone = document.querySelector('.buy__inputphone');
+                const erorrValidation = document.querySelector('.buy__erorr');
 
-                    const resultNames = document.querySelectorAll('.buy__name');
-                    const arrNames = []
-                    resultNames.forEach(e => {
-                        arrNames.push(e.textContent);
-                    })
+                if (numberPhone.value.length !== 11 || numberPhone.value[0] !== '7') {
+                    erorrValidation.textContent = 'Номер должен состоять из 11 цифр и начинаться с 7';
+                    return;
+                };
 
-                    resultDate.push(arrNames);
-
-                    const resultAmountValue = document.querySelectorAll('.buy__amount');
-                    const arrAmounValue = [];
-
-                    resultAmountValue.forEach(e => {
-                        arrAmounValue.push(e.value);
-                    })
-
-                    resultDate.push(arrAmounValue);
-                    summLastPrice = lastPrice.reduce((total, amount) => total + amount);
-                    
-                    resultDate.push(summLastPrice);
-
-                    const wrappers = document.querySelectorAll('.buy__wrapper');
-                    wrappers.forEach(e => {
-                        e.remove();
-                    })
-
-                    cartCounter.textContent = 0;
-                    cartCounter.style = 'display: none;';
-
-                    iconFullPrice.style = 'display: none;';
-
-                    buyCart.remove();
-                    cartText.style = 'display: block';
-
-                    btn.forEach(e => {
-                        e.textContent = 'Купить';
-                    })
-
-                    resultDate.push(numberPhone.value);
-                    
-
-                    console.log(resultDate);
-                    //Отправить данные куда-то
-
-                    buy.style = 'display: none;';
-                    cartPhone.style = 'display: none;';
-                    windowAgreement.style = 'display: none;';
-                    erorrValidation.textContent = '';
-                    numberPhone.value = '';
-                    resultDate = [];
-                    lastPrice = [];
-                    iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
-                    
-                    const thanksPurchase = document.querySelector('.parting');
-                    thanksPurchase.style = 'display: flex;';
-                    setTimeout(() => {
-                        thanksPurchase.style = 'display: none;';
-                    }, 4000);
+                const resultNames = document.querySelectorAll('.buy__name');
+                const arrNames = []
+                resultNames.forEach(e => {
+                    arrNames.push(e.textContent);
                 })
 
-            const closePhone = document.querySelector('.buy__close2');
+                resultDate.push(arrNames);
 
-            closePhone.addEventListener('click', function() {
+                const resultAmountValue = document.querySelectorAll('.buy__amount');
+                const arrAmounValue = [];
+
+                resultAmountValue.forEach(e => {
+                    arrAmounValue.push(e.value);
+                })
+
+                resultDate.push(arrAmounValue);
+                summLastPrice = lastPrice.reduce((total, amount) => total + amount);
+
+                resultDate.push(summLastPrice);
+
+                const wrappers = document.querySelectorAll('.buy__wrapper');
+                wrappers.forEach(e => {
+                    e.remove();
+                })
+
+                cartCounter.textContent = 0;
+                cartCounter.style = 'display: none;';
+
+                iconFullPrice.style = 'display: none;';
+
+                buyCart.remove();
+                cartText.style = 'display: block';
+
+                btn.forEach(e => {
+                    e.textContent = 'Купить';
+                })
+
+                resultDate.push(numberPhone.value);
+
+                console.log(resultDate);
+                //Отправить данные куда-то
+
+                buy.style = 'display: none;';
+                cartPhone.style = 'display: none;';
+                windowAgreement.style = 'display: none;';
+                erorrValidation.textContent = '';
+                numberPhone.value = '';
+                resultDate = [];
+                lastPrice = [];
+                iconFullPrice.textContent = `Итоговая сумма: ${summLastPrice}`;
+
+                const thanksPurchase = document.querySelector('.parting');
+                thanksPurchase.style = 'display: flex;';
+                setTimeout(() => {
+                    thanksPurchase.style = 'display: none;';
+                }, 4000);
+            }
+            phoneBtn.addEventListener('click', mainLogic)
+
+            const closePhone = document.querySelector('.buy__close2');
+            closePhone.addEventListener('click', function () {
                 cartPhone.style = 'display: none;';
                 windowAgreement.style = 'display: none;';
             })
-        })
-    })
+        }
+
+        keyOk.addEventListener('click', dataСapture);
+    }
+
+    const btnAnimation = () => {
+        buyCart.classList.add('buy__cart-hover');
+        setTimeout(() => {
+            buyCart.classList.remove('buy__cart-hover');
+        }, 1000);
+
+        confirmationOrder()
+    }
+
+    buyCart.addEventListener('click', btnAnimation);
 }
 
 btn.forEach(e => {
@@ -326,12 +332,16 @@ btn.forEach(e => {
 })
 
 const burger = document.querySelector('.burger__title');
-
-burger.addEventListener('click', function() {
+const burgerLogic = () => {
     const menu = document.querySelector('.menu');
     menu.classList.add('abc');
     const closeMenu = document.querySelector('.menu__close');
-    closeMenu.addEventListener('click', function() {
-        menu.classList.remove('abc');
+    closeMenu.addEventListener('click', function () {
+        menu.classList.add('cba');
+        setTimeout(() => {
+            menu.classList.remove('cba');
+            menu.classList.remove('abc');
+        }, 400);
     })
-})
+}
+burger.addEventListener('click', burgerLogic)
